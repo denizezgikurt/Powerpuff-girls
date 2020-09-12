@@ -4,9 +4,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//routing for 2 pages
+import EpisodeDetail from './EpisodeDetail';
+import ShowDetail from './ShowDetail';
+import { Router } from "@reach/router"
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App>
+      <Router>
+        <ShowDetail path="/" />
+        <EpisodeDetail path="/episode/:episodeNumber" />
+      </Router>
+    </App>
   </React.StrictMode>,
   document.getElementById('root')
 );
