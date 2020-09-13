@@ -7,7 +7,7 @@ export default function(url) {
         const response = await fetch(url, {
             method: 'GET',
         });
-        return response.json(); // parses JSON response into native JavaScript objects
+        return response.json();
     }
     useEffect(() => {
         getData().then(response => { setData(response) })

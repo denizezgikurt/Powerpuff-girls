@@ -1,21 +1,26 @@
 //Home page
 
-import React, { useState, useEffect } from 'react'; //imports useState hook from React
-import { Link } from "@reach/router"
-//Creates links with reach/router, for the episode pages
-
+import React, { useState } from 'react'; //imports useState hook from React
 import useApi from './useApi';
+import EpisodeDetail from './EpisodeDetail';
+
 
 function createMarkup(content) {
     return {__html: content};
 }
 
 function ShowDetail() {
+    const [ episodeDetail, setEpisodeDetail ] = useState(false);
+
     const data = useApi('http://api.tvmaze.com/shows/6771');
     const episodes = useApi('http://api.tvmaze.com/shows/6771/episodes');
 
     if (!data) {
         return <div>No data</div>
+    }
+
+    if (episodeDetail) {
+        return <EpisodeDetail detail={episodeDetail} />;
     }
 
     return (
@@ -33,7 +38,9 @@ function ShowDetail() {
                     episodes && episodes.map(episode => {
                         return (
                             <li key={episode.id}>
-                                <Link to={`episode/${episode.number}`}>{episode.name}</Link>
+                                <button onClick={() => setEpisodeDetail(episode)}>
+                                    <strong>Episode {episode.number}</strong>: {episode.name}
+                                </button>
                             </li>
                         )
                     })

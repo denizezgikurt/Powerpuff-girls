@@ -1,18 +1,12 @@
-//second page for episodes
-
 import React from 'react';
-import { useParams } from "@reach/router"
-import { Link } from "@reach/router"
 
-function EpisodeDetail() {
-    const params = useParams();
-    const episodeNumber = params.episodeNumber;
-
+function EpisodeDetail({ detail }) {
+    // http://api.tvmaze.com/shows/1/episodebynumber?season=1&number=1
+    console.log(detail);
     return (
         <div>
-            <Link to="/">Go to homepage</Link>
-            {/** Go to homepage or previous and next episodes */}
-            episode {episodeNumber}
+            {/** Go to previous and next episodes */}
+            episode
             <h1>title</h1>
             <p>Description</p>
             <img src="" width="400px" height="500px" />
