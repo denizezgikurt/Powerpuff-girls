@@ -1,0 +1,15 @@
+.episode-detail {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+	color: #D0D1FF;
+}
+
+.back-button {
+    background: #D0D1FF;
+    padding: 12px 16px;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+}

@@ -1,0 +1,44 @@
+.show-detail {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+	color: #D8BBFF;
+}
+
+.show-detail h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+button.episode-link {
+    padding: 12px 16px;
+    background: #C8E7FF;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.episode-list-wrapper {
+    padding: 24px;
+    background-color: #DEAAFF;
+    border-radius: 8px;
+    border: 8px solid #D0D1FF;
+	color:  #511d69 !important;
+}
+
+ul.episode-list {
+    margin: 0;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+li.episode-list-item {
+    list-style: none;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
