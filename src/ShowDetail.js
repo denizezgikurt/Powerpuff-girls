@@ -4,27 +4,30 @@ import React, { useState, useEffect } from 'react'; //imports useState hook from
 import { Link } from "@reach/router"
 //Creates links with reach/router, for the episode pages
 
-async function getData(url = '') {
-    const response = await fetch(url, {
-        method: 'GET',
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
+import useApi from './useApi';
+
+
+function createMarkup(content) {
+    return {__html: content};
 }
 
 function ShowDetail() {
-    const [ showData, setShowData ] = useState(); //setting variables with useState hook
+    const data = useApi('http://api.tvmaze.com/shows/6771');
+    if (!data) {
+        return <div>No data</div>
+    }
 
-    useEffect(() => {
-        getData('http://api.tvmaze.com/shows/6771').then(data => {
-            setShowData(data)
-        });
-    }, []);
-
+    console.log(data);
     return (
         <div>
-            <h1>Title</h1>
-            <p>Description</p>
-            <img src="" width="700px" height="400px" />
+            <h1>{data.name}</h1>
+            <img src={data.image.original} width="100%" height="400px" />
+            <div dangerouslySetInnerHTML={createMarkup(data.summary)} />
+
+            <p><strong>Rating:</strong> {data.rating.average}</p>
+            <p><strong>Language:</strong> {data.language}</p>
+            <p><strong>Network:</strong> {data.network.name}</p>
+
             <ul>
                 <li><Link to="/episode/1">Episode 1</Link></li>
                 <li><Link to="/episode/2">Episode 2</Link></li>
