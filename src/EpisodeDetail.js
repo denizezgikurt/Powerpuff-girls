@@ -1,15 +1,19 @@
 import React from 'react';
 
-function EpisodeDetail({ detail }) {
-    // http://api.tvmaze.com/shows/1/episodebynumber?season=1&number=1
-    console.log(detail);
+function createMarkup(content) {
+    return {__html: content};
+}
+
+function EpisodeDetail({ detail, onBack }) {
     return (
         <div>
-            {/** Go to previous and next episodes */}
-            episode
-            <h1>title</h1>
-            <p>Description</p>
-            <img src="" width="400px" height="500px" />
+            <button onClick={onBack}>Back</button>
+            <h1>{detail.name}</h1>
+            <h4>
+                Season {detail.season} / Episode {detail.number}
+            </h4>
+            <img alt="powerpuff_girls_episodes" src={detail.image.original} width="100%" height="500px" />
+            <div dangerouslySetInnerHTML={createMarkup(detail.summary)} />
         </div>
     )
 }

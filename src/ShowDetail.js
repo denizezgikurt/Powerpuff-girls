@@ -1,9 +1,8 @@
 //Home page
 
-import React, { useState } from 'react'; //imports useState hook from React
+import React, { useState } from 'react';
 import useApi from './useApi';
 import EpisodeDetail from './EpisodeDetail';
-
 
 function createMarkup(content) {
     return {__html: content};
@@ -20,13 +19,13 @@ function ShowDetail() {
     }
 
     if (episodeDetail) {
-        return <EpisodeDetail detail={episodeDetail} />;
+        return <EpisodeDetail onBack={() => setEpisodeDetail(false)} detail={episodeDetail} />;
     }
 
     return (
         <div>
             <h1>{data.name}</h1>
-            <img src={data.image.original} width="100%" height="400px" />
+            <img alt="powerpuff_girls_poster" src={data.image.original} width="100%" height="400px" />
             <div dangerouslySetInnerHTML={createMarkup(data.summary)} />
 
             <p><strong>Rating:</strong> {data.rating.average}</p>
